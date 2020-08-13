@@ -1,16 +1,16 @@
-;start of end script
-;RETRACT FILAMENT FOR EASYFILAMENT CHANGE
+;;start of end script
+;;RETRACT FILAMENT FOR EASYFILAMENT CHANGE
 
 ;T0
-;SET TEMP – used in case you want to extract a filament that wasn’t used
+;;SET TEMP – used in case you want to extract a filament that wasn’t used
 ;M109 T0 S[first_layer_temperature]  ;set extruder temp and wait
 ;G1 E-25 F1000; Retract for easy filament change
 
 ;T1
-;SET TEMP – used in case you want to extract a filament that wasn’t used
+;;SET TEMP – used in case you want to extract a filament that wasn’t used
 ;M109 T1 S[first_layer_temperature]  ;set extruder temp and wait - TEMPORARY
 ;G1 E-25 F1000; Retract for easy filament change
-; END RETRACT FILAMENT
+;;END RETRACT FILAMENT
 
 M104 S0 ; turn off temperature
 M104 T0 S0
@@ -20,4 +20,4 @@ M140 S0; turn off bed
 M107; turn off the part cooling fan
 G28 ; Home all axis
 M84     ; disable motors
-;end of end script
+;;end of end script
