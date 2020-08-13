@@ -1,0 +1,26 @@
+;Start of start Script
+M117 Set Bed Temp
+M140 S[first_layer_bed_temperature] ; set bed temp and continue
+G28 ; home all axes
+M117 Set Hot End temp ; reset below temp settings once you find the bug
+;SET WHICH EXTRUDER OR BOTH
+M104 T0 S[first_layer_temperature] ; set extruder temp and continue
+M104 T1 S[first_layer_temperature] ; set extruder temp and continue
+M117 Set print position
+G90 ;absolute positioning
+G1 X0 Y0 Z15 E0 F1000 ;go to wait position
+M117 Wait for Bed and Extruder Temp
+
+;PAUSE AND WAIT FOR BED AND EXTRUDERS TO REACH TEMP
+M190 S[first_layer_bed_temperature] ;set bed temp and wait
+M109 T0 S[first_layer_temperature] ;set extruder temp and wait
+M109 T1 S[first_layer_temperature] ;set extruder temp and wait
+;READY TO PURGE BEFORE PRINT
+G1 Z0.8 F200 ;set extruder height
+
+;SET TO T0 OR T1 DEPENDING WHICH ONE IS FIRST 
+M117 Purge line
+T0
+G1 X220 Y0 E80 F1000 ;purge line
+M117 Printing....[input_filename_base]
+;end of start script
